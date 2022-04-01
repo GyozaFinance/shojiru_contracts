@@ -7,6 +7,15 @@ const { getContractFactory } = require("@nomiclabs/hardhat-ethers/types");
 const hre = require("hardhat");
 const ethers = hre.ethers;
 
+
+// Shojiru deployed to: 0x457b7b28f0D5FDaeFD2a4670a96A35237E3eeb85
+// sjr_telos_lp deployed to: 0x8959f2F2F412dAD20F81CBd1C84cfb9A7b095c1d
+// Farm deployed to: 0xdA4D2F68366272baA146a401b8903f9c1B2967eA
+// Staking_sjr deployed to: 0x0c551BaE4A7C700FebBb7e1B32ac55b6fA21fC8C
+// Auto_sjr deployed to: 0x89efA3a473F78304e8385b07E848eb75030cd6aA
+// shojiVault_tlos_zappy deployed to: 0xE714F8245976440f67d92BFC63c50692B6d2D5D0
+// staking_sjr_telos_lp deployed to: 0x8fE2fa6ECE2528a0F6e4D51b66F9FbE20810E79e
+
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
   // line interface.
