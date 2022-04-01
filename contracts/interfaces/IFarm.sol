@@ -25,6 +25,8 @@ interface IFarm {
 
     // Zappy inteface
     function pendingZAP(uint256 _pid, address _user) external view returns (uint256); 
+
+    function zappy() external view returns (address);
     // Deposit LP tokens to MasterChef for CAKE-like allocation.
     function deposit(uint256 _pid, uint256 _amount) external;
 

@@ -29,58 +29,58 @@ wtlos = interface.IBEP20("0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E")
 
     # adding liquidity to Zappy
     shojiru.approve(router, 1_000_000e18)
-    # router.addLiquidityETH(shojiru,
-    #                 1_000e18,
-    #                 0,
-    #                 0,
-    #                 acct,
-    #                 int(time.time()+1000),
-    #                 {"from":acct, "value":1e18}
-    #                 )
+    router.addLiquidityETH(shojiru,
+                    1_000e18,
+                    0,
+                    0,
+                    acct,
+                    int(time.time()+1000),
+                    {"from":acct, "value":1e18}
+                    )
 
-    # factory = interface.IPancakeFactory(router.factory())
+    factory = interface.IPancakeFactory(router.factory())
 
-    # sjr_tlos_lp = interface.IPancakePair(factory.getPair(wtlos, shojiru))
+    sjr_tlos_lp = interface.IPancakePair(factory.getPair(wtlos, shojiru))
     
-    # # farming contract that manages the mint
-    # farm = ShojiruFarm.deploy(
-    #                 shojiru, # farmed token
-    #                 0)        # start block)
-
-    # # We give the ownership of the token to the farm contract
-    # shojiru.grantMinterRole(farm)
-
-    # # Contract used to store the Shojiru staked and linked to the farm
-    # staking_sjr = StratShojiru.deploy(
-    #                                 shojiru,    # token
-    #                                 farm,       # farm contract
-    #                                 acct)       # governor
+    # farming contract that manages the mint
+    farm = ShojiruFarm.deploy(
+                    shojiru, # farmed token
+                    0)        # start block)
     
-    # # We can now deploy the Auto Shojiru vault
-    # auto_sjr = AutoShojiru.deploy(
-    #                             shojiru, # token
-    #                             farm,    # farm contract
-    #                             acct)    # owner
+    # We give the ownership of the token to the farm contract
+    shojiru.grantMinterRole(farm)
 
-    # # Finally we deploy the SweetVault, which is the entrance point
-    # shojiVault = ShojiVault.deploy(
-    #             shojiru,    # _shojiru,
-    #             auto_sjr,    # _autoShojiru,
-    #             "0x774d427B2105849A0FBb6f49c432C087E3607F6F", # _stakedToken (zappy-tlos lp)
-    #             chef,    # _stakedTokenFarm,
-    #             zappy,    # _farmRewardToken,
-    #             0,    # _farmPid,
-    #             False,    # _isCakeStaking,
-    #             router,    # _router,
-    #             [shojiru, wtlos],    # _pathToShojiru,
-    #             [wtlos, shojiru],   # _pathToWtlos,
-    #             acct,    # _owner,
-    #             treasury,    # _treasury,
-    #             keeper,    # _keeper,
-    #             platform,    # _platform,
-    #             300,    # _buyBackRate,
-    #             500    # _platformFee
-    # )
+    # Contract used to store the Shojiru staked and linked to the farm
+    staking_sjr = StratShojiru.deploy(
+                                    shojiru,    # token
+                                    farm,       # farm contract
+                                    acct)       # governor
+    
+    # We can now deploy the Auto Shojiru vault
+    auto_sjr = AutoShojiru.deploy(
+                                shojiru, # token
+                                farm,    # farm contract
+                                acct)    # owner
+
+    # Finally we deploy the SweetVault, which is the entrance point
+    shojiVault = ShojiVault.deploy(
+                shojiru,    # _shojiru,
+                auto_sjr,    # _autoShojiru,
+                "0x774d427B2105849A0FBb6f49c432C087E3607F6F", # _stakedToken (zappy-tlos lp)
+                chef,    # _stakedTokenFarm,
+                zappy,    # _farmRewardToken,
+                0,    # _farmPid,
+                False,    # _isCakeStaking,
+                router,    # _router,
+                [shojiru, wtlos],    # _pathToShojiru,
+                [wtlos, shojiru],   # _pathToWtlos,
+                acct,    # _owner,
+                treasury,    # _treasury,
+                keeper,    # _keeper,
+                platform,    # _platform,
+                300,    # _buyBackRate,
+                500    # _platformFee
+    )
 
 # Scanned farm :  0x3D2c6bCED5f50f5412234b87fF0B445aBA4d10e9
 # 9 pools available

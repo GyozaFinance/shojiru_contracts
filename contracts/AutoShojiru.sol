@@ -5,7 +5,7 @@ pragma solidity 0.6.12;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
-import "../interfaces/IShojiruFarm.sol";
+import "./interfaces/IShojiruFarm.sol";
 
 /// @notice Autocompounder for Shojiru token rewards staked in the shojiru farm
 contract AutoShojiru is Ownable, ReentrancyGuard {

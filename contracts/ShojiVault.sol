@@ -5,9 +5,9 @@ pragma solidity 0.6.12;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
-import "../interfaces/IFarm.sol";
-import "../interfaces/IPancakeRouter02.sol";
-import "../interfaces/IShojiruVault.sol";
+import "./interfaces/IFarm.sol";
+import "./interfaces/IPancakeRouter02.sol";
+import "./interfaces/IShojiruVault.sol";
 
 /**
 @title ShojiVault
@@ -104,20 +104,8 @@ contract ShojiVault is Ownable, ReentrancyGuard {
   ) public {
     SHOJIRU = IERC20(_shojiru);
 
-    require(
-      _pathToShojiru[0] == address(_farmRewardToken) &&
-        _pathToShojiru[_pathToShojiru.length - 1] == address(SHOJIRU),
-      "ShojiVault: Incorrect path to SHOJIRU"
-    );
-
-    require(
-      _pathToWtlos[0] == address(_farmRewardToken) &&
-        _pathToWtlos[_pathToWtlos.length - 1] == WTLOS,
-      "ShojiVault: Incorrect path to WTLOS"
-    );
-
-    require(_buyBackRate <= buyBackRateUL);
-    require(_platformFee <= platformFeeUL);
+    require(_buyBackRate <= buyBackRateUL, "bb rate too high");
+    require(_platformFee <= platformFeeUL, "platformFee too high");
 
     AUTO_SHOJIRU = IShojiruVault(_autoShojiru);
     STAKED_TOKEN = IERC20(_stakedToken);
@@ -130,6 +118,18 @@ contract ShojiVault is Ownable, ReentrancyGuard {
     WTLOS = router.WETH();
     pathToShojiru = _pathToShojiru;
     pathToWtlos = _pathToWtlos;
+
+    require(
+      _pathToShojiru[0] == address(_farmRewardToken) &&
+        _pathToShojiru[_pathToShojiru.length - 1] == address(SHOJIRU),
+      "ShojiVault: Incorrect path to SHOJIRU"
+    );
+
+    require(
+      _pathToWtlos[0] == address(_farmRewardToken) &&
+        _pathToWtlos[_pathToWtlos.length - 1] == WTLOS,
+      "ShojiVault: Incorrect path to WTLOS"
+    );
 
     buyBackRate = _buyBackRate;
     platformFee = _platformFee;
