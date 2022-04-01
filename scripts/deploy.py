@@ -7,7 +7,7 @@ prod = True # change this when deploying
 
 # params
 publish = True if prod else False
-acct = accounts.load("telos_yo", password="Societe") if prod else accounts[0]
+acct = accounts.load("telos_yo", password="") if prod else accounts[0]
 treasury = acct
 keeper = acct
 platform = acct
@@ -46,7 +46,7 @@ wtlos = interface.IBEP20("0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E")
     farm = ShojiruFarm.deploy(
                     shojiru, # farmed token
                     0)        # start block)
-    
+
     # We give the ownership of the token to the farm contract
     shojiru.grantMinterRole(farm)
 
