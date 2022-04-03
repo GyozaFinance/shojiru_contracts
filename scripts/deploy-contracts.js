@@ -59,11 +59,11 @@ async function main() {
   await shojiru.grantMinterRole(owner.address);
   await shojiru.mint(
     owner.address,
-    new ethers.BigNumber.from("1000000", "ether")
+    new ethers.BigNumber.from("100000000000000000000000000")
   );
   await shojiru.approve(
     router.address,
-    new ethers.BigNumber.from("1000000", "ether")
+    new ethers.BigNumber.from("100000000000000000000000000")
   );
 
   await factory.createPair(wtlos.address, shojiru.address);
@@ -99,7 +99,7 @@ async function main() {
   const shojiVault_tlos_zappy = await ShojiVault.deploy(
     shojiru.address,
     auto_sjr.address,
-    "0x774d427B2105849A0FBb6f49c432C087E3607F6F",
+    "0x774d427B2105849A0FBb6f49c432C087E3607F6F", // Zappy-tlos LP
     zappyFarm.address,
     zappyToken.address,
     0,
@@ -116,6 +116,8 @@ async function main() {
   );
 
   console.log("shojiVault_tlos_zappy deployed to:", shojiVault_tlos_zappy.address);
+
+  // This fails when usign Telos+hardhat
 
   // await shojiru.approve(router, new ethers.BigNumber.from("10000", "ether"))
   // await router.addLiquidityETH(

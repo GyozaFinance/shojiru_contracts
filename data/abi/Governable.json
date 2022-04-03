@@ -1,0 +1,5 @@
+[
+  "event SetGov(address)",
+  "function govAddress() view returns (address)",
+  "function setGov(address)"
+]

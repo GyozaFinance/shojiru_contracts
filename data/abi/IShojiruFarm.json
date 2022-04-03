@@ -1,0 +1,8 @@
+[
+  "event Deposit(address indexed,uint256 indexed,uint256)",
+  "event Withdraw(address indexed,uint256 indexed,uint256)",
+  "function deposit(uint256,uint256)",
+  "function pendingSHOJIRU(uint256,address) view returns (uint256)",
+  "function userInfo(uint256,address) view returns (uint256, uint256)",
+  "function withdraw(uint256,uint256)"
+]

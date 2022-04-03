@@ -1,0 +1,14 @@
+[
+  "function deposit(uint256,uint256)",
+  "function emergencyWithdraw(uint256)",
+  "function enterStaking(uint256)",
+  "function getMultiplier(uint256,uint256) view returns (uint256)",
+  "function leaveStaking(uint256)",
+  "function pendingCharm(uint256,address) view returns (uint256)",
+  "function pendingZAP(uint256,address) view returns (uint256)",
+  "function poolInfo(uint256) view returns (tuple(address,uint256,uint256,uint256))",
+  "function poolLength() view returns (uint256)",
+  "function userInfo(uint256,address) view returns (uint256)",
+  "function withdraw(uint256,uint256)",
+  "function zappy() view returns (address)"
+]

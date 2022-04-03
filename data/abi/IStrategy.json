@@ -1,0 +1,8 @@
+[
+  "function deposit(address,uint256) returns (uint256)",
+  "function earn()",
+  "function inCaseTokensGetStuck(address,uint256,address)",
+  "function sharesTotal() view returns (uint256)",
+  "function wantLockedTotal() view returns (uint256)",
+  "function withdraw(address,uint256) returns (uint256)"
+]
